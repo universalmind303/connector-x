@@ -1,4 +1,5 @@
 use super::arrow_assoc::ArrowAssoc;
+use super::ArrayRef;
 use super::Builder;
 use crate::errors::Result;
 use crate::typesystem::{ParameterizedFunc, ParameterizedOn};
@@ -43,7 +44,7 @@ where
             T: ArrowAssoc,
         {
             builder.shrink_to_fit();
-            Ok(MutableArray::as_arc(
+            Ok(MutableArray::as_box(
                 builder
                     .as_mut_any()
                     .downcast_mut::<T::Builder>()

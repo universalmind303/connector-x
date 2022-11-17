@@ -7,9 +7,13 @@ pub mod arrow;
 #[cfg(feature = "dst_arrow2")]
 pub mod arrow2;
 
+use ::arrow2::array::Array;
+
 use crate::data_order::DataOrder;
 use crate::errors::ConnectorXError;
 use crate::typesystem::{TypeAssoc, TypeSystem};
+
+pub(crate) type ArrayRef = Box<dyn Array>;
 
 /// A `Destination` is associated with a `TypeSystem` and a `PartitionDestination`.
 /// `PartitionDestination` allows multiple threads write data into the buffer owned by `Destination`.

@@ -5,13 +5,12 @@ mod errors;
 mod funcs;
 pub mod typesystem;
 
+use super::ArrayRef;
 use super::{Consume, Destination, DestinationPartition};
 use crate::constants::RECORD_BATCH_SIZE;
 use crate::data_order::DataOrder;
 use crate::typesystem::{Realize, TypeAssoc, TypeSystem};
 use anyhow::anyhow;
-use arrow2::array::Array;
-use arrow2::array::ArrayRef;
 use arrow2::array::MutableArray;
 use arrow2::chunk::Chunk;
 use arrow2::datatypes::Schema;
@@ -27,7 +26,7 @@ pub use typesystem::Arrow2TypeSystem;
 
 type Builder = Box<dyn MutableArray + 'static + Send>;
 type Builders = Vec<Builder>;
-type ChunkBuffer = Arc<Mutex<Vec<Chunk<Arc<dyn Array>>>>>;
+type ChunkBuffer = Arc<Mutex<Vec<Chunk<ArrayRef>>>>;
 
 pub struct Arrow2Destination {
     schema: Vec<Arrow2TypeSystem>,
@@ -109,7 +108,7 @@ impl Destination for Arrow2Destination {
 
 impl Arrow2Destination {
     #[throws(Arrow2DestinationError)]
-    pub fn arrow(self) -> (Vec<Chunk<Arc<dyn Array>>>, Arc<Schema>) {
+    pub fn arrow(self) -> (Vec<Chunk<ArrayRef>>, Arc<Schema>) {
         let lock = Arc::try_unwrap(self.data).map_err(|_| anyhow!("Partitions are not freed"))?;
         (
             lock.into_inner()
@@ -137,7 +136,12 @@ impl Arrow2Destination {
                     .columns()
                     .iter()
                     .zip(chunks.1)
-                    .map(|(arr, field)| Series::try_from((field.name.as_ref(), arr.clone())))
+                    .map(|(arr, field)| {
+                        let name = field.name.as_str();
+                        let arr = arr.clone();
+
+                        Series::try_from((name, arr))
+                    })
                     .collect();
 
                 let columns = columns_results?;
