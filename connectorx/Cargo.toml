@@ -36,7 +36,7 @@ ndarray = {version = "0.15", optional = true}
 num-traits = {version = "0.2", optional = true}
 openssl = {version = "0.10", optional = true}
 oracle = {version = "0.5", optional = true}
-polars = {git = "https://github.com/pola-rs/polars.git", rev = "609ac98c68ff60ea5c4529a9ca728deaaac3551d", optional = true}
+polars = {git = "https://github.com/pola-rs/polars.git", rev = "851b9bda17e19c554907422db146aa6c1479345b", optional = true}
 postgres = {version = "0.19", features = ["with-chrono-0_4", "with-uuid-0_8", "with-serde_json-1"], optional = true}
 postgres-native-tls = {version = "0.5", optional = true}
 postgres-openssl = {version = "0.5", optional = true}
@@ -63,8 +63,8 @@ optional = true
 git = "https://github.com/ritchie46/arrow2"
 # rev = "e106cff24dc0c8942603712d7332a97871dce44e"
 # path = "../../../arrow2"
-branch = "2022_11_06"
-version = "0.14.1"
+branch = "polars_2022-12-30"
+version = "0.15"
 default-features = false
 features = [
   "compute_aggregate",
