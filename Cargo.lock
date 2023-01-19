@@ -210,6 +210,28 @@ dependencies = [
 ]
 
 [[package]]
+name = "arrow2"
+version = "0.15.0"
+source = "git+https://github.com/jorgecarleitao/arrow2?rev=218b7cf93a1fe713bd4fd4641cfc53a3c10977aa#218b7cf93a1fe713bd4fd4641cfc53a3c10977aa"
+dependencies = [
+ "ahash 0.8.0",
+ "bytemuck",
+ "chrono",
+ "dyn-clone",
+ "either",
+ "ethnum",
+ "foreign_vec",
+ "getrandom 0.2.7",
+ "hash_hasher",
+ "lexical-core 0.8.5",
+ "multiversion",
+ "num-traits",
+ "rustc_version 0.4.0",
+ "simdutf8",
+ "strength_reduce",
+]
+
+[[package]]
 name = "async-channel"
 version = "1.7.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -791,7 +813,7 @@ version = "0.3.2-alpha.2"
 dependencies = [
  "anyhow",
  "arrow",
- "arrow2",
+ "arrow2 0.15.0 (git+https://github.com/ritchie46/arrow2?branch=polars_2022-12-30)",
  "bb8",
  "bb8-tiberius",
  "chrono",
@@ -3022,7 +3044,7 @@ dependencies = [
 [[package]]
 name = "polars"
 version = "0.0.1"
-source = "git+https://github.com/pola-rs/polars.git?rev=851b9bda17e19c554907422db146aa6c1479345b#851b9bda17e19c554907422db146aa6c1479345b"
+source = "git+https://github.com/pola-rs/polars.git?rev=404a3c68ef32b55aff4f9e56a4efce96e38e56ed#404a3c68ef32b55aff4f9e56a4efce96e38e56ed"
 dependencies = [
  "polars-core",
  "wasm-bindgen",
@@ -3032,9 +3054,9 @@ dependencies = [
 [[package]]
 name = "polars-arrow"
 version = "0.26.1"
-source = "git+https://github.com/pola-rs/polars.git?rev=851b9bda17e19c554907422db146aa6c1479345b#851b9bda17e19c554907422db146aa6c1479345b"
+source = "git+https://github.com/pola-rs/polars.git?rev=404a3c68ef32b55aff4f9e56a4efce96e38e56ed#404a3c68ef32b55aff4f9e56a4efce96e38e56ed"
 dependencies = [
- "arrow2",
+ "arrow2 0.15.0 (git+https://github.com/jorgecarleitao/arrow2?rev=218b7cf93a1fe713bd4fd4641cfc53a3c10977aa)",
  "hashbrown 0.13.2",
  "num",
  "thiserror",
@@ -3043,11 +3065,11 @@ dependencies = [
 [[package]]
 name = "polars-core"
 version = "0.26.1"
-source = "git+https://github.com/pola-rs/polars.git?rev=851b9bda17e19c554907422db146aa6c1479345b#851b9bda17e19c554907422db146aa6c1479345b"
+source = "git+https://github.com/pola-rs/polars.git?rev=404a3c68ef32b55aff4f9e56a4efce96e38e56ed#404a3c68ef32b55aff4f9e56a4efce96e38e56ed"
 dependencies = [
  "ahash 0.8.0",
  "anyhow",
- "arrow2",
+ "arrow2 0.15.0 (git+https://github.com/jorgecarleitao/arrow2?rev=218b7cf93a1fe713bd4fd4641cfc53a3c10977aa)",
  "bitflags",
  "chrono",
  "hashbrown 0.13.2",
@@ -3067,8 +3089,9 @@ dependencies = [
 [[package]]
 name = "polars-utils"
 version = "0.26.1"
-source = "git+https://github.com/pola-rs/polars.git?rev=851b9bda17e19c554907422db146aa6c1479345b#851b9bda17e19c554907422db146aa6c1479345b"
+source = "git+https://github.com/pola-rs/polars.git?rev=404a3c68ef32b55aff4f9e56a4efce96e38e56ed#404a3c68ef32b55aff4f9e56a4efce96e38e56ed"
 dependencies = [
+ "once_cell",
  "rayon",
 ]
 
