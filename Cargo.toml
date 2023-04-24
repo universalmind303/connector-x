@@ -5,3 +5,6 @@ members = ["connectorx", "connectorx-cpp"]
 [profile.release]
 debug = true
 lto = true
+
+[patch."https://github.com/ritchie46/arrow2"]
+arrow2 = {git = "https://github.com/jorgecarleitao/arrow2", rev = "144a8b865f0652b9fcd8a17e88f8e47cd53dca57"}
